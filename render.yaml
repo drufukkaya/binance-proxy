@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: binance-proxy
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    branch: main
+    region: oregon
