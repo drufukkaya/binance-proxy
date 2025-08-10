@@ -235,3 +235,4 @@ app.get("/indicators/multi", async (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log(smartscore api on :${PORT});
 });
+}
