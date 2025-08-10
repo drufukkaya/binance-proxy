@@ -1,9 +1,11 @@
 services:
   - type: web
-    name: binance-proxy
+    name: smartscore-api
     env: node
     plan: free
-    buildCommand: npm install
-    startCommand: npm start
-    branch: main
-    region: oregon
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+    autoDeploy: true
