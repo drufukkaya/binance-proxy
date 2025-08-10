@@ -218,3 +218,20 @@ app.get("/indicators/multi", async (req, res) => {
       const { mid, upper, lower, bbp } = bb(close,20,2);
       const { plusDI, minusDI, ADX } = adx(high, low, close,14);
       const i = close.length - 1;
+      out[iv] = {
+        close: close[i], volume: vol[i], closeTime: ct[i],
+        rsi14: rsi14[i] ?? null,
+        macd: ml[i] ?? null, macd_signal: sg[i] ?? null, macd_hist: hs[i] ?? null,
+        bb_mid: mid[i] ?? null, bb_upper: upper[i] ?? null, bb_lower: lower[i] ?? null, bbp: bbp[i] ?? null,
+        plus_di: plusDI[i] ?? null, minus_di: minusDI[i] ?? null, adx14: ADX[i] ?? null
+      };
+    }
+    res.json({ symbol, data: out });
+  } catch (e) {
+    res.status(500).json({ error: "indicators_multi failed", details: e?.message || e.toString() });
+  }
+});
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(smartscore api on :${PORT});
+});
